@@ -1,0 +1,16 @@
+{
+  "packages": ["packages/*", "test-packages/*"],
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "version": "3.3.1",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    },
+    "version": {
+      "allowBranch": "master",
+      "message": "chore(release): release %s",
+      "exact": true
+    }
+  }
+}

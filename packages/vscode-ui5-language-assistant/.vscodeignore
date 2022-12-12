@@ -1,0 +1,22 @@
+
+# We are bundling our extension so no need to include the dependencies separately.
+node_modules
+
+# Except a **subset** language-server package which is executed as a separate process
+# Note only one star (*) is expended in these dirs.
+!**/@ui5-language-assistant/language-server/*
+!**/@ui5-language-assistant/language-server/dist/*
+
+# For debugging of bundled language-server in production (source maps)
+!**/@ui5-language-assistant/language-server/lib/src/**
+!**/@ui5-language-assistant/language-server/src/**
+
+# The VSCode Extension's dev artifacts
+coverage/**
+.nyc_output/**
+lib/test/**
+test/**
+scripts
+
+# Readme gifs (linked via jsdeliver instead of part of vsix).
+resources/readme

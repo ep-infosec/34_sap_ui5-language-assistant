@@ -1,0 +1,110 @@
+{
+  "name": "vscode-ui5-language-assistant",
+  "displayName": "UI5 Language Assistant",
+  "private": true,
+  "description": "Language Support For SAPUI5",
+  "version": "3.3.1",
+  "publisher": "SAPOSS",
+  "icon": "resources/ui5-language-assistant.png",
+  "keywords": [
+    "UI5",
+    "OpenUI5",
+    "SAPUI5"
+  ],
+  "categories": [
+    "Programming Languages"
+  ],
+  "license": "Apache-2.0",
+  "main": "./lib/src/extension",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "jsonValidation": [
+      {
+        "fileMatch": [
+          "webapp/manifest.json",
+          "src/manifest.json",
+          "src/main/webapp/manifest.json"
+        ],
+        "url": "https://raw.githubusercontent.com/SAP/ui5-manifest/master/schema.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "UI5 Language Assistant",
+      "properties": {
+        "UI5LanguageAssistant.logging.level": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fatal",
+            "error",
+            "warn",
+            "info",
+            "debug",
+            "trace"
+          ],
+          "default": "error",
+          "description": "The verbosity of logging according to the following order: trace > debug > info > warn > error > fatal > off.",
+          "scope": "window"
+        },
+        "UI5LanguageAssistant.trace.server": {
+          "scope": "window",
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Trace the communication between VS Code and the UI5 language server."
+        },
+        "UI5LanguageAssistant.codeAssist.deprecated": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Include deprecated APIs in code assist."
+        },
+        "UI5LanguageAssistant.codeAssist.experimental": {
+          "scope": "resource",
+          "type": "boolean",
+          "default": false,
+          "description": "Include experimental APIs in code assist."
+        }
+      }
+    }
+  },
+  "repository": "https://github.com/sap/ui5-language-assistant/tree/master/packages/vscode-ui5-language-assistant",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "scripts": {
+    "ci": "npm-run-all clean compile lint coverage:* bundle package",
+    "clean": "rimraf ./dist ./lib ./coverage ./nyc_output *.vsix NOTICE LICENSE",
+    "compile": "yarn run clean && tsc -p .",
+    "compile:watch": "tsc -p . --watch",
+    "lint": "eslint . --ext .ts --max-warnings=0 --ignore-path=../../.gitignore",
+    "test:integration": "node lib/test/run-integration-tests.js",
+    "test:unit": "mocha --config=./test/unit/.mocharc.js",
+    "coverage:integration": "nyc node lib/test/run-integration-tests.js",
+    "coverage:unit": "nyc mocha --config=./test/unit/.mocharc.js",
+    "bundle": "webpack --mode production",
+    "package": "node ./scripts/package-vsix"
+  },
+  "dependencies": {
+    "@ui5-language-assistant/language-server": "3.3.1",
+    "vscode-languageclient": "8.0.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.166",
+    "@types/vscode": "1.47.0",
+    "@ui5-language-assistant/settings": "3.3.1",
+    "@ui5-language-assistant/user-facing-text": "3.3.1",
+    "lodash": "4.17.21",
+    "proxyquire": "2.1.3",
+    "vsce": "1.83.0",
+    "vscode-languageserver": "8.0.2",
+    "vscode-test": "1.6.1"
+  }
+}

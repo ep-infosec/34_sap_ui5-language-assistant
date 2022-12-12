@@ -1,0 +1,41 @@
+{
+  "references": [
+    {
+      "path": "./packages/language-server"
+    },
+    {
+      "path": "./packages/logic-utils"
+    },
+    {
+      "path": "./packages/semantic-model"
+    },
+    {
+      "path": "./packages/semantic-model-types"
+    },
+    {
+      "path": "./packages/settings"
+    },
+    {
+      "path": "./packages/user-facing-text"
+    },
+    {
+      "path": "./packages/xml-views-completion"
+    },
+    {
+      "path": "./packages/xml-views-quick-fix"
+    },
+    {
+      "path": "./packages/xml-views-tooltip"
+    },
+    {
+      "path": "./packages/xml-views-validation"
+    },
+    {
+      "path": "./test-packages/test-utils"
+    },
+    {
+      "path": "./packages/vscode-ui5-language-assistant"
+    }
+  ],
+  "include": ["src/**/*"]
+}

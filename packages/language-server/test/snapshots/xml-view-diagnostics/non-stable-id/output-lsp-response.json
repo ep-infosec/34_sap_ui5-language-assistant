@@ -1,0 +1,22 @@
+[
+  {
+    "range": {
+      "start": { "line": 5, "character": 9 },
+      "end": { "line": 5, "character": 17 }
+    },
+    "severity": 1,
+    "source": "UI5 Language Assistant",
+    "message": "The \"Button\" class can't have an empty ID attribute when flexEnabled is \"true\".",
+    "code": 1012
+  },
+  {
+    "range": {
+      "start": { "line": 11, "character": 13 },
+      "end": { "line": 11, "character": 21 }
+    },
+    "severity": 1,
+    "source": "UI5 Language Assistant",
+    "message": "The \"Dialog\" class can't have an empty ID attribute when flexEnabled is \"true\".",
+    "code": 1012
+  }
+]
